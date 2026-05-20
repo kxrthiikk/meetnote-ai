@@ -6,16 +6,26 @@ type MeetingCardProps = {
     time: string;
     transcriptReady?: boolean;
     summaryReady?: boolean;
+    isSelected?: boolean;
 };
 
 export default function MeetingCard({
     title,
     time,
     transcriptReady,
-    summaryReady
+    summaryReady,
+    isSelected,
 }: MeetingCardProps) {
     return (
-        <div className="bg-zinc-900 rounded-2xl p-5 border border-zinc-800">
+        <div
+            className={`
+                    rounded-2xl p-5 border transition-all
+                    ${isSelected
+                    ? "bg-zinc-800 border-blue-500"
+                    : "bg-zinc-900 border-zinc-800"
+                }
+                `}
+        >
             <h3 className="text-xl font-medium">
                 {title}
             </h3>
